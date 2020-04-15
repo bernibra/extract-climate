@@ -1,0 +1,39 @@
+﻿Site,Canton,Project,Contact,Lat_WGS84,Long_WGS84,Available,Provisional,,When,Weather station/temp loggers?,Set-up by,Land-owner / contact
+Calanda,GR,Calanda,Jonathan Levine,46.88776,9.48943,1,,,24.09.18,1,Jake + Will Godsoe,
+Nesselboden,GR,Calanda,Jonathan Levine,46.86918,9.49006,1,,,24.09.18,1,Jake + Will Godsoe,
+1600m,GR,Calanda,Jonathan Levine,46.87747,9.49421,1,,,24.09.18,1,Jake + Will Godsoe,
+Arella,GR,Calanda,Jonathan Levine,46.87386,9.50881,1,,,24.09.18,1,Jake + Will Godsoe,
+Stillberg high,GR,WaRM,"Chelsea Chisholm, Christian Rixen, Sonja Wipf",46.772663,9.858747,1,,,08.10.18,1,Jake + Chelsea,
+Stillberg low,GR,WaRM,"Chelsea Chisholm, Christian Rixen, Sonja Wipf",46.77634,9.86755,1,,,08.10.18,1,Jake + Chelsea,
+Furka,VS,,"Erika Hiltbrunner, Christian Körner",46.57761,8.42146,1,,242,30.09.18,1,Jake + Tom Waterfall,
+Leuk,VS,ETH,Simone Fior,46.31228,7.66231,1,,748,03.10.18,1,Jake + Simon Vogel,
+Oberu,VS,ETH,Simone Fior,46.34542,7.67322,1,,730,03.10.18,1,Jake + Simon Vogel,
+Fineln,VS,ETH,Simone Fior,46.01201,7.7631,1,,240,03.10.18,1,Jake + Simon Vogel,
+Zeneggen,VS,ETH,Simone Fior,46.27238,7.87702,1,,,12.10.18,1,Tim + Simon Vogel,
+Eschikon,ZH,,Jonathan Levine,47.44978,8.681,,1,redundant  with UNIL in PCA but not temp/precip plot,,,,
+CalandaPeak,GR,Calanda,Jonathan Levine,46.89306,9.47048,,1,Prefer not to need to ask the Commune to use the site,,,,
+Les Pléiades,VD,PlantPopNet,"Maude Baudraz, Yvonne Buckley",46.48335,6.91424,1,,,10.10.18,,Jake + Maude,Farmer : Tâche (0796309401) / Land-owner : Pierre Schneiter (pierre.schneiter55@gmail.com)
+Hauteville ,VD,PlantPopNet,"Maude Baudraz, Yvonne Buckley",46.46289,6.87218,1,,,10.10.18,,Jake + Maude,Morrier (0792876561 / 0219432965)
+Chamby,VD,PlantPopNet,"Maude Baudraz, Yvonne Buckley",46.44545,6.9309,1,,,10.10.18,,Jake + Maude,"André Strahm (0797812060, andrestrahm@bluewin.ch)"
+Neusäss,GR,Calanda,Jonathan Levine,46.88675,9.4954,,1,redundant with Calanda,,,,
+Les Diablerets,VD,PlantPopNet,"Maude Baudraz, Yvonne Buckley",46.36874,7.12251,1,,,09.10.18,,Loïc + Maude,Favre Laurent (0795605165)
+Bovonne,VD,ETH,Loic Pelissier,46.26821,7.10785,,1,"redundant with L'Hongrin, road access poor; might be dry meadow",,,,
+LaCorde,VD,ETH,Loic Pelissier,46.27745,7.15404,,1,redundant with Anzeinde,,,,
+L'Hongrin,VD,PlantPopNet,"Maude Baudraz, Yvonne Buckley",46.40677,7.06149,1,,,09.10.18,,Loïc + Maude,"Farmer : Bernanrd Pilet (0796335965, farmer) / Land-owner : ARMY (0584614222 (Wulf) to know when the site is accessible. 0244679325 has to be called the morning of the day one wants to visit the site, to guarantee the watch/guards will open the gate without trouble. They will ask for the bus' licence plate)"
+La Forclaz/Le Sépey,VD,PlantPopNet,"Maude Baudraz, Yvonne Buckley",46.35417,7.07158,1,,663,09.10.18,,Loïc + Maude,"Edmond Pittet (0792041333, phone numer is actually his wife's / 0793504612)"
+GryonHostel,VD,,Merlin Cousins,46.2748,7.06251,,1,Merlin OK with it but site too shaded/steep,,,,
+LesPosses,VD,NICH,Jake Alexander,46.27065,7.0327,1,,,05.10.18,1,Tim,
+Solalex,VD,NICH,Jake Alexander,46.2866,7.13379,1,,,03.10.18,1,Tim + Loic,
+Anzeinde,VD,NICH,Jake Alexander,46.28745,7.16814,1,,,03.10.18,1,Tim + Loic,
+Paneirosse,VD,ETH,Loic Pelissier,46.2677,7.16241,1,,,10.10.18,HOBO,Loïc + Simon Vogel,
+Bex,VD,,Loic's sister,46.248267,7.007083,1,,,12.10.18,HOBO,Loïc + Simon Vogel,
+Gryon,VD,,Olivier's home,46.28348,7.09092,1,,,12.10.18,HOBO,Loïc,
+Aigle,VD,,Patrice's home,46.31057,6.96339,1,,288,10.10.18,HOBO,Loïc + Simon Vogel,
+Prabeneu2,VD,SNF,Jake Alexander,46.21926,7.0459,1,,,02.10.18,1,Jake + Tim,
+LesMartinaux,VD,NICH,Jake Alexander,46.21557,7.05104,1,,,23.10.18,1,Loïc + Kai,
+Cretelet,VD,NICH,Jake Alexander,46.21785,7.05451,1,,,04.10.18,1,Tim + Loic,
+Rionda2,VD,SNF,Jake Alexander,46.20331,7.05959,1,,,04.10.18,1,Tim + Loic,
+UNIL greenhouse,VD,NICH,Jake Alexander,46.52232,6.57655,1,,,18.09.18,?,Jake + Tim,
+Zurich-ETH Hoengg,ZH,,Jake Alexander,47.40851,8.51087,1,,,,,Jake,
+Rionda1,VD,NICH,Hanna,46.20411,7.06033,,,,,,,
+Prabeneu1,VD,NICH,Hanna,6.21645,7.03965,,,,,,,
