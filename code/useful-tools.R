@@ -20,17 +20,40 @@ transform_coordinates <- function(lon, lat){
   #Alternatively, you can use: swissgrid <- "+init=epsg:21781"
 
   cord.UTM <- spTransform(cord.dec, swissgrid)
-  return(list(N=cord.UTM@coords[2], E=cord.UTM@coords[1]))
+  return(list(x=cord.UTM@coords[1], y=cord.UTM@coords[2]))
 
 }
 
 #Check if the site is in the Rechalp area
 is.reshalp <- function(folder, lon, lat){
 
-  # file <- paste(folder, "biovars/yearly/bio1_tmean1981_Rechalp_ngb5_mwconic.tif")
-  file <- folder
-  bioclim.data <- stack("../../competition-networks/data/raw/climatic-data/important-yearly-variables/bio12_p_8110.tif")
-  crs(bioclim.data)<-"+proj=somerc +init=world:CH1903"
+  NorthEeast <- transform_coordinates(lon=lon,lat=lat)
   
+  file <- paste(folder, "biovars/yearly/bio1_tmean1981_Rechalp_ngb5_mwconic.tif", sep="")
+  bioclim.data <- stack(file)
+  crs(bioclim.data)<-"+proj=somerc +init=world:CH1903"
+
+  if(is.na(extract(bioclim.data, data.frame(NorthEeast)))){
+    return(FALSE)
+  }else{
+    return(TRUE)
+  }
 }
 
+little.check.rechalp <- function(folder){
+
+  lat_ <- seq(46, 47, length.out = 100)
+  lon_<- seq(6, 9, length.out = 100)
+
+  file <- paste(folder, "biovars/yearly/bio1_tmean1981_Rechalp_ngb5_mwconic.tif", sep="")
+  bioclim.data <- stack(file)
+  crs(bioclim.data)<-"+proj=somerc +init=world:CH1903"
+  
+  dat <- expand.grid(lat=lat_, lon=lon_)
+  dat$value <- sapply(1:nrow(dat), function(x){
+    NorthEeast <- transform_coordinates(lon=dat$lon[x], lat=dat$lat[x])
+    return(!is.na(extract(bioclim.data, data.frame(NorthEeast))))
+  })
+  plot(dat$lon, dat$lat, col=as.integer(dat$value)+1, pch=20)
+  
+}

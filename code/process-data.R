@@ -1,13 +1,16 @@
 ## Libraries
 library(rgdal)
 library(stringr)
+library(dismo)
+library(raster)
+library(dplyr)
 
 ## Local library
 source("useful-tools.R")
 
 ## Global variables
-# rechalp_directory <- "/Volumes/GeoData_RECHALP/Climate/CHclim25/"
-rechalp_directory <- "../../competition-networks/data/raw/climatic-data/important-yearly-variables/bio1_tmean_8110.tif"
+rechalp_directory <- "/Volumes/GeoData_RECHALP/Climate/CHclim25/"
+# rechalp_directory <- "../../competition-networks/data/raw/climatic-data/important-yearly-variables/bio1_tmean_8110.tif"
 wsl_directory <- "../data/raw/climate-data/"
 raw_sites <- "../data/raw/sites/sites.csv"
 processed_folder <- "../data/processed/"
@@ -34,7 +37,11 @@ if(!dir.exists(rechalp_directory)){
     filename <- paste(processed_folder, sites$Codes[idx], ".csv", sep = "")
     
     # Figure out whether or not the data is from the Rechalp region
-    reshalp <- is.reshalp(folder = rechalp_directory, lon = sites$Long_WGS84[idx], lat = sites$Lat_WGS84[idx])
+    if(is.reshalp(folder = rechalp_directory, lon = sites$Long_WGS84[idx], lat = sites$Lat_WGS84[idx])){
+      print("SOMEWHERE ELSE")
+    }else{
+      print("RESHALP")
+    }
     
   }
 
