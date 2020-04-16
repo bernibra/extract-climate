@@ -10,7 +10,6 @@ source("useful-tools.R")
 
 ## Global variables
 rechalp_directory <- "/Volumes/GeoData_RECHALP/Climate/CHclim25/"
-# rechalp_directory <- "../../competition-networks/data/raw/climatic-data/important-yearly-variables/bio1_tmean_8110.tif"
 wsl_directory <- "../data/raw/climate-data/"
 raw_sites <- "../data/raw/sites/sites.csv"
 processed_folder <- "../data/processed/"
@@ -30,19 +29,13 @@ if(!dir.exists(rechalp_directory)){
 
 }else{
   
-  # Find climatic variables for each site
-  for(idx in 1:nrow(sites)){
-    
-    # Define name of the output file
-    filename <- paste(processed_folder, sites$Codes[idx], ".csv", sep = "")
-    
-    # Figure out whether or not the data is from the Rechalp region
-    if(is.reshalp(folder = rechalp_directory, lon = sites$Long_WGS84[idx], lat = sites$Lat_WGS84[idx])){
-      print("SOMEWHERE ELSE")
-    }else{
-      print("RESHALP")
-    }
-    
-  }
+  # Define name of the output file
+  sites$filename <- paste(processed_folder, "sites/", sites$Codes, "/", sites$Codes, ".Rds", sep = "")
+  
+  # figure out which ones are in rechalp
+  sites$rechalp <- as.vector(is.rechalp(folder = rechalp_directory, lon = sites$Long_WGS84, lat = sites$Lat_WGS84))
 
+  extract.rechalp(folder = rechalp_directory, data = sites[sites$rechalp,])
+  extract.wsl(folder = wsl_directory, data = sites[!sites$rechalp,])
+  
 }
