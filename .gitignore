@@ -1,2 +1,4 @@
 data/raw/climate-data
 *.DS_Store
+*.Rhistory
+*.RData
