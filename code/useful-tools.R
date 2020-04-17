@@ -180,8 +180,9 @@ write.readme.wsl <- function(folder, data){
     mat <- readRDS(file = paste(filename, ".Rds", sep = ""))
     write.table(mat, file = paste(filename, ".csv", sep = ""), col.names=NA, quote = F, sep = ",")
 
-    foldername <- paste(processed_folder, "sites/", as.character(data$Codes[i]), sep = "")
-    zip(paste(foldername, ".zip", sep=""), foldername)
+    # For some reason this doesn't work very well in mac... use "zip -r outputfile.zip folder" in the command line instead
+    # foldername <- paste(processed_folder, "sites/", as.character(data$Codes[i]), sep = "")
+    # zip(paste(foldername, ".zip", sep=""), foldername)
 
     }
 }
