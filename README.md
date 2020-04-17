@@ -13,43 +13,43 @@ The data is stored in `data/processed/sites/`. For every site, there is a *.zip*
 
 Every site has an id assigned, referenced in the following table:
 
-| code | site | canton |
-| --- | --- | --- |
-| site1 | Calanda | GR |
-| site2 | Nesselboden | GR |
-| site3 | 1600m | GR |
-| site4 | Arella | GR |
-| site5 | Stillberg high | GR |
-| site6 | Stillberg low | GR |
-| site7 | Furka | VS |
-| site8 | Leuk | VS |
-| site9 | Oberu | VS |
-| site10 | Fineln | VS |
-| site11 | Zeneggen | VS |
-| site12 | Eschikon | ZH |
-| site13 | CalandaPeak | GR |
-| site14 | Les Pléiades | VD |
-| site15 | Hauteville | VD |
-| site16 | Chamby | VD |
-| site17 | Neusäss | GR |
-| site18 | Les Diablerets | VD |
-| site19 | Bovonne | VD |
-| site20 | LaCorde | VD |
-| site21 | L'Hongrin | VD |
-| site22 | La Forclaz/Le Sépey | VD |
-| site23 | GryonHostel | VD |
-| site24 | LesPosses | VD |
-| site25 | Solalex | VD |
-| site26 | Anzeinde | VD |
-| site27 | Paneirosse | VD |
-| site28 | Bex | VD |
-| site29 | Gryon | VD |
-| site30 | Aigle | VD |
-| site31 | Prabeneu2 | VD |
-| site32 | LesMartinaux | VD |
-| site33 | Cretelet | VD |
-| site34 | Rionda2 | VD |
-| site35 | UNIL greenhouse | VD |
-| site36 | Zurich-ETH Hoengg | ZH |
-| site37 | Rionda1 | VD |
-| site38 | Prabeneu1 | VD |
+| id | site | canton |
+| :---: | :---: | :---: |
+| [site1](data/processed/sites/site1) | Calanda | GR |
+| [site2] | Nesselboden | GR |
+| [site3] | 1600m | GR |
+| [site4] | Arella | GR |
+| [site5] | Stillberg high | GR |
+| [site6] | Stillberg low | GR |
+| [site7] | Furka | VS |
+| [site8] | Leuk | VS |
+| [site9] | Oberu | VS |
+| [site10] | Fineln | VS |
+| [site11] | Zeneggen | VS |
+| [site12] | Eschikon | ZH |
+| [site13] | CalandaPeak | GR |
+| [site14] | Les Pléiades | VD |
+| [site15] | Hauteville | VD |
+| [site16] | Chamby | VD |
+| [site17] | Neusäss | GR |
+| [site18] | Les Diablerets | VD |
+| [site19] | Bovonne | VD |
+| [site20] | LaCorde | VD |
+| [site21] | L'Hongrin | VD |
+| [site22] | La Forclaz/Le Sépey | VD |
+| [site23] | GryonHostel | VD |
+| [site24] | LesPosses | VD |
+| [site25] | Solalex | VD |
+| [site26] | Anzeinde | VD |
+| [site27] | Paneirosse | VD |
+| [site28] | Bex | VD |
+| [site29] | Gryon | VD |
+| [site30] | Aigle | VD |
+| [site31] | Prabeneu2 | VD |
+| [site32] | LesMartinaux | VD |
+| [site33] | Cretelet | VD |
+| [site34] | Rionda2 | VD |
+| [site35] | UNIL greenhouse | VD |
+| [site36] | Zurich-ETH Hoengg | ZH |
+| [site37] | Rionda1 | VD |
+| [site38] | Prabeneu1 | VD |
