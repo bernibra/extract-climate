@@ -4,6 +4,7 @@ library(stringr)
 library(dismo)
 library(raster)
 library(dplyr)
+library(zip)
 
 ## Local library
 source("useful-tools.R")
