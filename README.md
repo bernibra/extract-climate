@@ -14,6 +14,7 @@ The data is stored in `data/processed/sites/`. For every site, there is a *.zip*
 Every site has an id assigned, referenced in the following table:
 
  | number  | code | site | canton | 
+ | --- | --- | --- |
  | 1 | site1 | Calanda | GR | 
  | 2 | site2 | Nesselboden | GR | 
  | 3 | site3 | 1600m | GR | 
