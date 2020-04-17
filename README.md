@@ -15,41 +15,41 @@ Every site has an id assigned, referenced in the following table:
 
 | id | site | canton |
 | :---: | :---: | :---: |
-| [site1](data/processed/sites/site1) | Calanda | GR |
-| [site2] | Nesselboden | GR |
-| [site3] | 1600m | GR |
-| [site4] | Arella | GR |
-| [site5] | Stillberg high | GR |
-| [site6] | Stillberg low | GR |
-| [site7] | Furka | VS |
-| [site8] | Leuk | VS |
-| [site9] | Oberu | VS |
-| [site10] | Fineln | VS |
-| [site11] | Zeneggen | VS |
-| [site12] | Eschikon | ZH |
-| [site13] | CalandaPeak | GR |
-| [site14] | Les Pléiades | VD |
-| [site15] | Hauteville | VD |
-| [site16] | Chamby | VD |
-| [site17] | Neusäss | GR |
-| [site18] | Les Diablerets | VD |
-| [site19] | Bovonne | VD |
-| [site20] | LaCorde | VD |
-| [site21] | L'Hongrin | VD |
-| [site22] | La Forclaz/Le Sépey | VD |
-| [site23] | GryonHostel | VD |
-| [site24] | LesPosses | VD |
-| [site25] | Solalex | VD |
-| [site26] | Anzeinde | VD |
-| [site27] | Paneirosse | VD |
-| [site28] | Bex | VD |
-| [site29] | Gryon | VD |
-| [site30] | Aigle | VD |
-| [site31] | Prabeneu2 | VD |
-| [site32] | LesMartinaux | VD |
-| [site33] | Cretelet | VD |
-| [site34] | Rionda2 | VD |
-| [site35] | UNIL greenhouse | VD |
-| [site36] | Zurich-ETH Hoengg | ZH |
-| [site37] | Rionda1 | VD |
-| [site38] | Prabeneu1 | VD |
+| [site1](data/processed/sites/site1.zip) | Calanda | GR |
+| [site2](data/processed/sites/site2.zip) | Nesselboden | GR |
+| [site3](data/processed/sites/site3.zip) | 1600m | GR |
+| [site4](data/processed/sites/site4.zip) | Arella | GR |
+| [site5](data/processed/sites/site5.zip) | Stillberg high | GR |
+| [site6](data/processed/sites/site6.zip) | Stillberg low | GR |
+| [site7](data/processed/sites/site7.zip) | Furka | VS |
+| [site8](data/processed/sites/site8.zip) | Leuk | VS |
+| [site9](data/processed/sites/site9.zip) | Oberu | VS |
+| [site10](data/processed/sites/site10.zip) | Fineln | VS |
+| [site11](data/processed/sites/site11.zip) | Zeneggen | VS |
+| [site12](data/processed/sites/site12.zip) | Eschikon | ZH |
+| [site13](data/processed/sites/site13.zip) | CalandaPeak | GR |
+| [site14](data/processed/sites/site14.zip) | Les Pléiades | VD |
+| [site15](data/processed/sites/site15.zip) | Hauteville | VD |
+| [site16](data/processed/sites/site16.zip) | Chamby | VD |
+| [site17](data/processed/sites/site17.zip) | Neusäss | GR |
+| [site18](data/processed/sites/site18.zip) | Les Diablerets | VD |
+| [site19](data/processed/sites/site19.zip) | Bovonne | VD |
+| [site20](data/processed/sites/site20.zip) | LaCorde | VD |
+| [site21](data/processed/sites/site21.zip) | L'Hongrin | VD |
+| [site22](data/processed/sites/site22.zip) | La Forclaz/Le Sépey | VD |
+| [site23](data/processed/sites/site23.zip) | GryonHostel | VD |
+| [site24](data/processed/sites/site24.zip) | LesPosses | VD |
+| [site25](data/processed/sites/site25.zip) | Solalex | VD |
+| [site26](data/processed/sites/site26.zip) | Anzeinde | VD |
+| [site27](data/processed/sites/site27.zip) | Paneirosse | VD |
+| [site28](data/processed/sites/site28.zip) | Bex | VD |
+| [site29](data/processed/sites/site29.zip) | Gryon | VD |
+| [site30](data/processed/sites/site30.zip) | Aigle | VD |
+| [site31](data/processed/sites/site31.zip) | Prabeneu2 | VD |
+| [site32](data/processed/sites/site32.zip) | LesMartinaux | VD |
+| [site33](data/processed/sites/site33.zip) | Cretelet | VD |
+| [site34](data/processed/sites/site34.zip) | Rionda2 | VD |
+| [site35](data/processed/sites/site35.zip) | UNIL greenhouse | VD |
+| [site36](data/processed/sites/site36.zip) | Zurich-ETH Hoengg | ZH |
+| [site37](data/processed/sites/site37.zip) | Rionda1 | VD |
+| [site38](data/processed/sites/site38.zip) | Prabeneu1 | VD |
