@@ -36,9 +36,11 @@ if(!dir.exists(rechalp_directory)){
   # figure out which ones are in rechalp
   sites$rechalp <- as.vector(is.rechalp(folder = rechalp_directory, lon = sites$Long_WGS84, lat = sites$Lat_WGS84))
 
+  # Extract climate variables
   extract.rechalp(folder = rechalp_directory, data = sites[sites$rechalp,], additional_folder = wsl_directory)
   extract.wsl(folder = wsl_directory, data = sites[!sites$rechalp,])
-  
+
+  # Write files 
   write.readme.rechalp(processed_folder, sites[sites$rechalp,])
   write.readme.wsl(processed_folder, sites[!sites$rechalp,])
   

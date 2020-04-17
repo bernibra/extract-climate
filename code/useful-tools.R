@@ -1,5 +1,5 @@
 
-#Download WSL data if not there
+#Download WSL data if not there. These are only bioclim variables at approx 1km of resolution
 download_climatic <- function(res=0.5, meanlat, meanlong){
   
   bioclim.data <- getData(name = "worldclim",
@@ -15,8 +15,10 @@ download_climatic <- function(res=0.5, meanlat, meanlong){
 transform_coordinates <- function(lon, lat, data_system = "+init=epsg:4326", map_system = "+proj=somerc +init=world:CH1903"){
   #Alternatively, you can use the following projection for Antoine's data: map_system <- "+init=epsg:21781"
   
+  # Defining current coordinates
   cord.dec = SpatialPoints(cbind(lon, lat), proj4string=CRS(data_system))
 
+  # Chaning coordinates
   cord.UTM <- spTransform(cord.dec, map_system)
 
   return(list(x=cord.UTM@coords[,1], y=cord.UTM@coords[,2]))
@@ -26,24 +28,30 @@ transform_coordinates <- function(lon, lat, data_system = "+init=epsg:4326", map
 #Check if the site is in the Rechalp area
 is.rechalp <- function(folder, lon, lat){
 
+  # Change to Northing Easting
   NorthEeast <- transform_coordinates(lon=lon,lat=lat)
   
+  # Import raster example
   file <- paste(folder, "biovars/yearly/bio1_tmean1981_Rechalp_ngb5_mwconic.tif", sep="")
   bioclim.data <- stack(file)
   crs(bioclim.data)<-"+proj=somerc +init=world:CH1903"
 
+  # Check if the coordinates are there
   return(!is.na(extract(bioclim.data, data.frame(NorthEeast))))
 }
 
 little.check.rechalp <- function(folder){
 
+  # Generate grid
   lat_ <- seq(46, 46.8, length.out = 100)
   lon_<- seq(6.5, 8, length.out = 100)
 
+  # Import raster example
   file <- paste(folder, "biovars/yearly/bio1_tmean1981_Rechalp_ngb5_mwconic.tif", sep="")
   bioclim.data <- stack(file)
   crs(bioclim.data)<-"+proj=somerc +init=world:CH1903"
   
+  # Check that things would work as expected
   dat <- expand.grid(lat=lat_, lon=lon_)
   NorthEeast <- transform_coordinates(lon=dat$lon, lat=dat$lat)
   dat$value <- as.vector(!is.na(extract(bioclim.data, data.frame(NorthEeast))))
@@ -52,20 +60,26 @@ little.check.rechalp <- function(folder){
 }
 
 start.rechalp.file <- function(filenames, rows, columns){
+  
+  # Start first all R objects to optimize the code
   data <- data.frame(matrix(NA, nrow=length(rows), ncol=length(columns)))
   colnames(data) <- columns
   rownames(data) <- rows
   for(filename in filenames){
     saveRDS(data, file = filename)
   }
+
 }
 
 write.value.data <- function(filenames, row, column, z){
+  
+  #Write a value in the R object
   for(x in 1:length(filenames)){
     data <- readRDS(file = filenames[x])
     data[row, column] <- z[x]
     saveRDS(data, file = filenames[x])
   }
+  
 }
 
 extract.wsl <- function(folder, data, start_files=TRUE){
@@ -92,7 +106,8 @@ extract.wsl <- function(folder, data, start_files=TRUE){
   info_files$bioclim[!chelsa] <- as.character(info_files$V2[!chelsa])
   info_files$files[chelsa] <- paste(folder_A, info_files$files[chelsa], sep="")
   info_files$files[!chelsa] <- paste(folder_B, gsub("worldclim_", "", info_files$files[!chelsa]), sep = "")
-  
+
+  #Deine output dimensions  
   rows <- unique(info_files$V1)
   columns <- unique(info_files$bioclim)
   
@@ -111,6 +126,7 @@ extract.wsl <- function(folder, data, start_files=TRUE){
     write.value.data(filenames = data$filename, row = as.character(info_files$V1[i]), column = as.character(info_files$bioclim[i]), z = as.numeric(z))
   }
   close(pb) 
+  
 }
 
 extract.rechalp <- function(folder, data, additional_folder, start_files=TRUE){
@@ -160,13 +176,15 @@ write.readme.rechalp <- function(folder, data){
   
   for (i in 1:nrow(data)){
     
+    # Writing things down: Readme, csv, zip...
     filename <- paste(processed_folder, "sites/", as.character(data$Codes[i]), "/", as.character(data$Codes[i]), sep = "")
     file.copy("../data/raw/readme-templates/other.md", paste(filename, ".md", sep = ""))
     mat <- readRDS(file = paste(filename, ".Rds", sep = ""))
     write.table(mat, file = paste(filename, ".csv", sep = ""), col.names=NA, quote = F, sep = ",")
     
-    foldername <- paste(processed_folder, "sites/", as.character(data$Codes[i]), sep = "")
-    zip(paste(foldername, ".zip", sep=""), foldername)
+    # For some reason this doesn't work very well in mac... use "zip -r outputfile.zip folder" in the command line instead
+    # foldername <- paste(processed_folder, "sites/", as.character(data$Codes[i]), sep = "")
+    # zip(paste(foldername, ".zip", sep=""), foldername)
     
   }
 }
@@ -175,6 +193,7 @@ write.readme.wsl <- function(folder, data){
   
   for (i in 1:nrow(data)){
 
+    # Writing things down: Readme, csv, zip...
     filename <- paste(processed_folder, "sites/", as.character(data$Codes[i]), "/", as.character(data$Codes[i]), sep = "")
     file.copy("../data/raw/readme-templates/other.md", paste(filename, ".md", sep = ""))
     mat <- readRDS(file = paste(filename, ".Rds", sep = ""))
