@@ -152,6 +152,6 @@ extract.rechalp <- function(folder, data, additional_folder, start_files=TRUE){
   close(pb)
   
   #Loop over Chelsa and Worldclim
-  extract.wsl(folder = additional_folder, data = data)
+  extract.wsl(folder = additional_folder, data = data, start_files = FALSE)
   
 }

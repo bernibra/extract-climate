@@ -1,4 +1,5 @@
-data/raw/climate-data
+data/raw/climate-data/wsl
+data/raw/climate-data/wc0.5
 *.DS_Store
 *.Rhistory
 *.RData
