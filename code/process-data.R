@@ -35,7 +35,7 @@ if(!dir.exists(rechalp_directory)){
   # figure out which ones are in rechalp
   sites$rechalp <- as.vector(is.rechalp(folder = rechalp_directory, lon = sites$Long_WGS84, lat = sites$Lat_WGS84))
 
-  extract.rechalp(folder = rechalp_directory, data = sites[sites$rechalp,])
+  extract.rechalp(folder = rechalp_directory, data = sites[sites$rechalp,], additional_folder = wsl_directory)
   extract.wsl(folder = wsl_directory, data = sites[!sites$rechalp,])
   
 }

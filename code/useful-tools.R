@@ -7,19 +7,18 @@ download_climatic <- function(res=0.5, meanlat, meanlong){
                           res = res,
                           lat=meanlat,
                           lon=meanlong,
-                          path = "../../data/raw/climatic-data/")
+                          path = "../data/raw/climate-data/")
 
 }
 
 #Convert Lat and Lon to N and E
-transform_coordinates <- function(lon, lat){
+transform_coordinates <- function(lon, lat, data_system = "+init=epsg:4326", map_system = "+proj=somerc +init=world:CH1903"){
+  #Alternatively, you can use the following projection for Antoine's data: map_system <- "+init=epsg:21781"
+  
+  cord.dec = SpatialPoints(cbind(lon, lat), proj4string=CRS(data_system))
 
-  cord.dec = SpatialPoints(cbind(lon, lat), proj4string=CRS("+proj=longlat"))
+  cord.UTM <- spTransform(cord.dec, map_system)
 
-  swissgrid <- "+proj=somerc +init=world:CH1903"
-  #Alternatively, you can use: swissgrid <- "+init=epsg:21781"
-
-  cord.UTM <- spTransform(cord.dec, swissgrid)
   return(list(x=cord.UTM@coords[,1], y=cord.UTM@coords[,2]))
 
 }
@@ -69,38 +68,90 @@ write.value.data <- function(filenames, row, column, z){
   }
 }
 
-extract.rechalp <- function(folder, data){
+extract.wsl <- function(folder, data, start_files=TRUE){
+  
+  #Two folders
+  folder_A <- paste(folder, "wsl/", sep="")
+  folder_B <- paste(folder, "wc0.5/", sep="")
+  
+  #Translate all coordinates
+  Coordinates_chelsa_and_worldclim <- transform_coordinates(lat=data$Lat_WGS84, lon=data$Long_WGS84, map_system = "+proj=longlat +datum=WGS84 +no_defs")
+  
+  #Download additional data
+  download_climatic(res=0.5, meanlat = mean(data$Lat_WGS84), meanlong = mean(data$Long_WGS84))
+  
+  #Find out all variables that we need
+  files_A <- list.files(folder_A, pattern = "tif$", full.names = FALSE)
+  files_B <- paste("worldclim", list.files(folder_B, pattern = "bil$", full.names = FALSE), sep="_")
+  files_ <- c(files_A, files_B)
+  info_files <- as.data.frame(do.call(rbind, strsplit(files_, split = "_")))
+  info_files$files <- files_
+  info_files$bioclim <- NA
+  chelsa <- as.character(info_files$V1)=="CHELSA"
+  info_files$bioclim[chelsa] <- paste("bio", as.numeric(gsub("\\.tif","", info_files$V3[chelsa])), sep="")
+  info_files$bioclim[!chelsa] <- as.character(info_files$V2[!chelsa])
+  info_files$files[chelsa] <- paste(folder_A, info_files$files[chelsa], sep="")
+  info_files$files[!chelsa] <- paste(folder_B, gsub("worldclim_", "", info_files$files[!chelsa]), sep = "")
+  
+  rows <- unique(info_files$V1)
+  columns <- unique(info_files$bioclim)
+  
+  #Start all files to store the data
+  if(start_files){
+    start.rechalp.file(data$filename, rows, columns) 
+  }
+  
+  #Loop over all variables and years to extract the information
+  pb <- txtProgressBar(min = 0, max = length(files), style = 3)
+  for(i in 1:length(info_files$files)){
+    bioclim.data <- stack(info_files$files[i])
+    crs(bioclim.data)<-"+proj=longlat +datum=WGS84 +no_defs"
+    z <- extract(bioclim.data, data.frame(Coordinates_chelsa_and_worldclim))
+    setTxtProgressBar(pb, i)
+    write.value.data(filenames = data$filename, row = as.character(info_files$V1[i]), column = as.character(info_files$bioclim[i]), z = as.numeric(z))
+  }
+  close(pb) 
+}
+
+extract.rechalp <- function(folder, data, additional_folder, start_files=TRUE){
   
   #Translate all coordinates
   NorthEeast <- transform_coordinates(lat=data$Lat_WGS84, lon=data$Long_WGS84)
   
   #Find out all variables that we need
-  folder <- paste(rechalp_directory, "biovars/yearly/", sep="")
+  folder <- paste(folder, "biovars/yearly/", sep="")
   files_ <- list.files(folder, pattern = "tif$", full.names = FALSE)
   files <- paste(folder, files_, sep="")
   info_files <- as.data.frame(do.call(rbind, strsplit(files_, split = "_")))
-  info_files$filenames <- files_
+  info_files$files <- files
   info_files$bioclim <- info_files$V1
   info_files$variable <- gsub("[[:digit:]]", "", info_files$V2)
   info_files$year <- gsub("[^[:digit:]]", "", info_files$V2)
   
+  #Defining output dimensions
   rows <- unique(info_files$year)
   columns <- unique(info_files$bioclim)
   
-  #Start all files to store the data
-  start.rechalp.file(data$filename, rows, columns)
-
+  #Addin wordlcim and Chelsa to the output data
+  rows <- c(as.character(rows), "CHELSA", "worldclim")
+  
+  #Start all files to store the data if start_files=TRUE
+  if(start_files){
+    start.rechalp.file(data$filename, rows, columns) 
+  }
+  
   #Loop over all variables and years to extract the information
   pb <- txtProgressBar(min = 0, max = length(files), style = 3)
-  for(i in 1:length(files)){
-    bioclim.data <- stack(files[i])
+  for(i in 1:length(info_files$files)){
+    bioclim.data <- stack(info_files$files[i])
+    crs(bioclim.data)<-"+proj=somerc +init=world:CH1903"
     z <- extract(bioclim.data, data.frame(NorthEeast))
     setTxtProgressBar(pb, i)
     write.value.data(filenames = data$filename, row = as.character(info_files$year[i]), column = as.character(info_files$bioclim[i]), z = as.numeric(z))
   }
   close(pb)
-}
-
-extract.wsl <- function(){
+  
+  #Loop over Chelsa and Worldclim
+  extract.wsl(folder = additional_folder, data = data)
   
 }
