@@ -94,9 +94,14 @@ extract.wsl <- function(folder, data, start_files=TRUE){
   #Download additional data
   download_climatic(res=0.5, meanlat = mean(data$Lat_WGS84), meanlong = mean(data$Long_WGS84))
   
-  #Find out all variables that we need
+  #Find files for all climatic variables
   files_A <- list.files(folder_A, pattern = "tif$", full.names = FALSE)
   files_B <- paste("worldclim", list.files(folder_B, pattern = "bil$", full.names = FALSE), sep="_")
+  if (length(files_A)==0) {
+    stop("You didn't download the WSL data. You can do this using the 'wget' command in the terminal to download the data from 'https://envidatrepo.wsl.ch/uploads/chelsa/'")
+  }
+  
+  #Find out all variables that we need
   files_ <- c(files_A, files_B)
   info_files <- as.data.frame(do.call(rbind, strsplit(files_, split = "_")))
   info_files$files <- files_
