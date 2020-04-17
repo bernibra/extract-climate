@@ -155,3 +155,23 @@ extract.rechalp <- function(folder, data, additional_folder, start_files=TRUE){
   extract.wsl(folder = additional_folder, data = data, start_files = FALSE)
   
 }
+
+write.readme.rechalp <- function(folder, data){
+  
+  for (i in 1:nrow(data)){
+    filename <- paste(processed_folder, "sites/", as.character(data$Codes[i]), "/", as.character(data$Codes[i]), sep = "")
+    file.copy("../data/raw/readme-templates/rechalp.md", paste(filename, ".md", sep = ""))
+    mat <- readRDS(file = paste(filename, ".Rds", sep = ""))
+    write.table(mat, file = paste(filename, ".csv", sep = ""), col.names=NA, quote = F, sep = ",")
+  }
+}
+
+write.readme.wsl <- function(folder, data){
+  
+  for (i in 1:nrow(data)){
+    filename <- paste(processed_folder, "sites/", as.character(data$Codes[i]), "/", as.character(data$Codes[i]), sep = "")
+    file.copy("../data/raw/readme-templates/other.md", paste(filename, ".md", sep = ""))
+    mat <- readRDS(file = paste(filename, ".Rds", sep = ""))
+    write.table(mat, file = paste(filename, ".csv", sep = ""), col.names=NA, quote = F, sep = ",")
+  }
+}
