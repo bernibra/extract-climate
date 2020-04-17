@@ -5,7 +5,7 @@ All climatic data was either provided by Antoine Guisan from [UNIL](https://www.
 
 ```diff
 Before using the data or code, consider the following:
-- WARNING #1: This is not all available climatic data for the different sites, only that data that was easily accessible. Additional climatic data can be found for the different sites, and you can contact me for support on how to obtain it. </div>
+- WARNING #1: This is not all available climatic data for the different sites, only that data that was easily accessible. Additional climatic data can be found for the different sites, and you can contact me for support on how to obtain it.
 - WARNING #2: There seems to be a problem with the units of the Rechalp data for the years 2011--2015 (i.e. the origin of such problems is the data, not the code to extract it). I am currently in contact with Antoine Guisan's group to try to figure out how to correct it.
 - WARNING #3: I can't guarantee that there are no other problems with the data; therefore, make sure you double-check your results and report any additional problems.  
 ```
