@@ -183,7 +183,7 @@ write.readme.rechalp <- function(folder, data){
     
     # Writing things down: Readme, csv, zip...
     filename <- paste(processed_folder, "sites/", as.character(data$Codes[i]), "/", as.character(data$Codes[i]), sep = "")
-    file.copy("../data/raw/readme-templates/other.md", paste(filename, ".md", sep = ""))
+    file.copy("../data/raw/readme-templates/rechalp.md", paste(filename, ".md", sep = ""), overwrite = T)
     mat <- readRDS(file = paste(filename, ".Rds", sep = ""))
     write.table(mat, file = paste(filename, ".csv", sep = ""), col.names=NA, quote = F, sep = ",")
     
@@ -200,7 +200,7 @@ write.readme.wsl <- function(folder, data){
 
     # Writing things down: Readme, csv, zip...
     filename <- paste(processed_folder, "sites/", as.character(data$Codes[i]), "/", as.character(data$Codes[i]), sep = "")
-    file.copy("../data/raw/readme-templates/other.md", paste(filename, ".md", sep = ""))
+    file.copy("../data/raw/readme-templates/other.md", paste(filename, ".md", sep = ""), overwrite = T)
     mat <- readRDS(file = paste(filename, ".Rds", sep = ""))
     write.table(mat, file = paste(filename, ".csv", sep = ""), col.names=NA, quote = F, sep = ",")
 
